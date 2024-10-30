@@ -1,7 +1,7 @@
 # 使い方
 ## main.py
 ```
-python main.py --nchains 鎖の本数 --nbeads 鎖の長さ --output 出力ファイル名
+python main.py --nchains 鎖の本数 --nbeads 鎖の長さ --rho モノマー密度 --output 出力ファイル名
 ```
 
 で実行できます。`--nchains` と `--nbeads` は必須です。`--output` は省略可能です。省略した場合は`lmp.data`に出力されます。
