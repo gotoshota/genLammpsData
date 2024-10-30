@@ -1,0 +1,30 @@
+variable DataFile string "a.data"
+variable r_cut equal 2.0^(1.0/6.0)
+#####################################
+
+units		    lj
+
+boundary        p p p
+atom_style      hybrid bond sphere
+special_bonds   fene
+
+read_data       ${DataFile}
+
+pair_style      lj/smooth/linear ${r_cut} 
+bond_style      fene
+
+pair_coeff      * * 1.0 1.0 
+bond_coeff      1 30.0 1.5 1.0 1.0
+
+## Run
+thermo          10
+
+dump            10 all custom 1 "./out/em.lammpstrj" id type mol xu yu zu
+dump_modify     10 sort id first yes
+
+min_style       sd
+minimize        1e-4 1e-6 1000 10000
+
+write_restart   ./out/em.rst
+write_data      ./out/em.data
+
