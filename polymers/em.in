@@ -19,11 +19,11 @@ bond_coeff      1 30.0 1.5 1.0 1.0
 ## Run
 thermo          10
 
-dump            10 all custom 10 "./out/em.lammpstrj" id mol xu yu zu
+dump            10 all custom 1 "./out/em.lammpstrj" id mol xu yu zu
 dump_modify     10 sort id first yes
 
 min_style       sd
-minimize        1e-4 1e-6 1000 10000
+minimize        1e-3 1e-5 1000 10000
 
 write_restart   ./out/em.rst
 write_data      ./out/em.data
