@@ -82,8 +82,8 @@ def write_lammps_data(chains, srd_particles, big_particles, box_size, filename="
         f.write(f"0.0 {box_size:.3f} zlo zhi\n\n")
 
         f.write("Masses\n\n")
-        f.write("1 1.0\n")  # Mass for chain atoms
-        f.write("2 0.01\n")  # Mass for SRD particles
+        f.write("1 5.0\n")  # Mass for chain atoms
+        f.write("2 1.0\n")  # Mass for SRD particles
         f.write("3 565.487\n\n")  # Mass for BIG particles
 
         f.write("Atoms\n\n")
@@ -92,7 +92,7 @@ def write_lammps_data(chains, srd_particles, big_particles, box_size, filename="
             for bead in chain:
                 position = bead[0]
                 nx, ny, nz = bead[1], bead[2], bead[3]
-                f.write(f"{atom_id} 1 {position[0]:.3f} {position[1]:.3f} {position[2]:.3f} {chain_id} 0.0 1.0 {nx} {ny} {nz}\n")
+                f.write(f"{atom_id} 1 {position[0]:.3f} {position[1]:.3f} {position[2]:.3f} {chain_id} 0.0 5.0 {nx} {ny} {nz}\n")
                 atom_id += 1
 
         # SRD粒子の出力
